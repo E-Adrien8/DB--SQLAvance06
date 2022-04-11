@@ -9,5 +9,13 @@ ORDER BY nb_player DESC;
 
 /*Retourne uniquement les noms des équipes complètes (ayant 14 joueurs ou plus, c’est-à- dire 7 joueurs et 7 remplaçants minimum), classés par ordre alphabétique.*/
 
-
+SELECT t.name, COUNT(wizard_id) AS nb_player
+     FROM player p
+     INNER JOIN team t ON t.id=p.team_id
+     GROUP BY name
+     HAVING nb_player > 14 
+     ORDER BY nb_player DESC;
+     
+     
+     
 
