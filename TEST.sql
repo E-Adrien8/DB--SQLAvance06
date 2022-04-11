@@ -16,6 +16,18 @@ SELECT t.name, COUNT(wizard_id) AS nb_player
      HAVING nb_player > 14 
      ORDER BY nb_player DESC;
      
+   
+/*L’entraîneur des Gryffindor est superstitieux, son jour préféré est le lundi. Retourne la liste des joueurs de son équipe qui ont été enrôlés un lundi (il souhaite les faire jouer en priorité), et classe les résultats par date d’enrôlement chronologique.*/
+
+SELECT w.firstname, w.lastname, p.enrollment_date
+FROM player p
+INNER JOIN wizard w ON wizard_id=w.id
+INNER JOIN team t ON team_id=t.id
+WHERE name = 'Gryffindor'
+AND DAYOFWEEK(enrollment_date) = 2
+ORDER BY enrollment_date ASC;   
+     
+     
      
      
 
